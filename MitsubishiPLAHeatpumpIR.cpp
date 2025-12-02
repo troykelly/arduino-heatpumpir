@@ -89,7 +89,7 @@ void MitsubishiPLAHeatpumpIR::send(IRSender& IR, uint8_t powerModeCmd, uint8_t o
 void MitsubishiPLAHeatpumpIR::sendMitsubishiPLA(IRSender& IR, uint8_t powerMode, uint8_t operatingMode, uint8_t fanSpeed, uint8_t temperature, uint8_t swingV, uint8_t swingH)
 {
   // Template from captured W001CP remote signals
-  // Byte 8 contains fan speed (different from SEZ which uses byte 7)
+  // Byte 7 = 0x00, Byte 8 = fan speed (different from SEZ which uses byte 7 for fan)
   uint8_t MitsubishiTemplate[] = { 0x23, 0xCB, 0x26, 0x21, 0x00, 0x40, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
   //                                  0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16
 
@@ -99,8 +99,9 @@ void MitsubishiPLAHeatpumpIR::sendMitsubishiPLA(IRSender& IR, uint8_t powerMode,
   // Set the temperature and operating mode on the template message
   MitsubishiTemplate[6] = ((temperature - 16) << 4) | operatingMode;
 
-  // Set the fan speed in byte 8 (NOT byte 7 like SEZ variant)
-  MitsubishiTemplate[8] = fanSpeed;
+  // Set the fan speed in byte 7 (same position as SEZ, different values)
+  MitsubishiTemplate[7] = fanSpeed;
+  // Byte 8 stays 0x04 (from template)
 
   // Checksum bytes (inverted copies of bytes 5-10)
   MitsubishiTemplate[11] = ~MitsubishiTemplate[5];

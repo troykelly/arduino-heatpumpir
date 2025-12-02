@@ -29,11 +29,11 @@
 #define MITSUBISHIPLA_AIRCON1_MODE_OFF       0x00
 #define MITSUBISHIPLA_AIRCON1_MODE_ON        0x40
 
-// Mitsubishi PLA fan speeds (byte 8, captured from W001CP remote)
-#define MITSUBISHIPLA_AIRCON1_FAN_LOW        0x04  // FAN_1
-#define MITSUBISHIPLA_AIRCON1_FAN_MEDLOW     0x24  // FAN_2
-#define MITSUBISHIPLA_AIRCON1_FAN_MEDIUM     0x44  // FAN_3
-#define MITSUBISHIPLA_AIRCON1_FAN_HIGH       0x64  // FAN_4
+// Mitsubishi PLA fan speeds (byte 7, captured from W001CP remote)
+#define MITSUBISHIPLA_AIRCON1_FAN_LOW        0x31  // FAN_1
+#define MITSUBISHIPLA_AIRCON1_FAN_MEDLOW     0x33  // FAN_2
+#define MITSUBISHIPLA_AIRCON1_FAN_MEDIUM     0x35  // FAN_3
+#define MITSUBISHIPLA_AIRCON1_FAN_HIGH       0x37  // FAN_4
 
 class MitsubishiPLAHeatpumpIR : public HeatpumpIR
 {
