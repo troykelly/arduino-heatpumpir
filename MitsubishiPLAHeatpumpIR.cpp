@@ -59,22 +59,22 @@ void MitsubishiPLAHeatpumpIR::send(IRSender& IR, uint8_t powerModeCmd, uint8_t o
   switch (fanSpeedCmd)
   {
     case FAN_AUTO:
-      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_LOW;  // Default to low for auto
+      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_LOW;  // Auto/Quiet = 0x31
       break;
     case FAN_1:
-      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_LOW;
+      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_LOW;  // Auto/Quiet = 0x31
       break;
     case FAN_2:
-      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_MEDLOW;
+      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_MEDLOW;  // Low = 0x33
       break;
     case FAN_3:
-      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_MEDIUM;
+      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_MEDIUM;  // Medium = 0x35
       break;
     case FAN_4:
-      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_HIGH;
+      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_HIGH;  // High = 0x37
       break;
     case FAN_5:
-      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_HIGH;  // Max out at high
+      fanSpeed = MITSUBISHIPLA_AIRCON1_FAN_HIGH;  // High = 0x37
       break;
   }
 
